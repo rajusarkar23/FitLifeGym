@@ -10,20 +10,20 @@ interface Post {
   postImageUrl: string;
   postBelongTo: number;
   postOwnerImageUrl: string;
-  postCreatorImageUrl: string,
-  postCreatorName: string
+  postCreatorImageUrl: string;
+  postCreatorName: string;
   createdAt: string;
 }
 // MEMBER PROFILE TYPES
 interface MemberProfile {
-    imageUrl: string | null;
-    userName: string | null;
-    name: string | null;
-    gender: string | null;
-    profession: string | null;
-    dob: string | null;
-    memberId: number | null
-  }
+  imageUrl: string | null;
+  userName: string | null;
+  name: string | null;
+  gender: string | null;
+  profession: string | null;
+  dob: string | null;
+  memberId: number | null;
+}
 // COMMENT TYPES
 interface PostComment {
   id: number;
@@ -50,11 +50,19 @@ interface SpaceStore {
   posts: Post[];
   postComments: PostComment[];
   memberProfile: MemberProfile[];
-  likes: Like[]
+  likes: Like[];
   // fetch
   fetchPosts: ({ authCookie }: { authCookie: string }) => Promise<void>;
   // add comment
-  addComment: ({authCookie,commentByName,commentFor,comment,commentByUserId,userProfileUrl,id}: {
+  addComment: ({
+    authCookie,
+    commentByName,
+    commentFor,
+    comment,
+    commentByUserId,
+    userProfileUrl,
+    id,
+  }: {
     authCookie: string;
     commentFor: number;
     comment: string;
@@ -64,13 +72,33 @@ interface SpaceStore {
     userProfileUrl: string;
   }) => Promise<void>;
   // fetch comments
-  fetchComments: ({ ids, authCookie }: { ids: number[], authCookie: string }) => Promise<void>;
+  fetchComments: ({
+    ids,
+    authCookie,
+  }: {
+    ids: number[];
+    authCookie: string;
+  }) => Promise<void>;
   // get member profile
-  getProfile: ({ userName, authCookie}: { userName: string, authCookie: string}) => Promise<void>;
+  getProfile: ({
+    userName,
+    authCookie,
+  }: {
+    userName: string;
+    authCookie: string;
+  }) => Promise<void>;
   // fetch likes
   fetchLikes: ({ ids }: { ids: number[] }) => Promise<void>;
   // manage likes
-  manageLike: ({postId, userId, authCookie}: {postId: number,userId: number, authCookie: string}) => Promise<void>;
+  manageLike: ({
+    postId,
+    userId,
+    authCookie,
+  }: {
+    postId: number;
+    userId: number;
+    authCookie: string;
+  }) => Promise<void>;
 }
 // STORE LOGICS
 const useSpaceStore = create(
@@ -96,7 +124,7 @@ const useSpaceStore = create(
             })
             .then((res) => {
               console.log(res.data);
-              
+
               if (res.data.success) {
                 set({
                   isLoading: false,
@@ -169,24 +197,25 @@ const useSpaceStore = create(
             }
           );
         } catch (error) {
-            console.log(error);
+          console.log(error);
         }
       },
       // fetch comments
-      fetchComments: async ({ ids,authCookie }) => {
+      fetchComments: async ({ ids, authCookie }) => {
         set({ postComments: [] });
         console.log(authCookie);
-        
+
         try {
           await axios
             .post(
               `${NEXT_PUBLIC_BACKEND_URL}/member/post/comment/fetch-comments`,
               {
                 ids,
-              }, {
+              },
+              {
                 headers: {
-                  Authorization: authCookie
-                }
+                  Authorization: authCookie,
+                },
               }
             )
             .then((res) => {
@@ -197,7 +226,7 @@ const useSpaceStore = create(
               }
             });
         } catch (error) {
-            console.log(error);
+          console.log(error);
         }
       },
       // get member profile
@@ -243,7 +272,7 @@ const useSpaceStore = create(
           });
         }
       },
-      // fetclikes 
+      // fetclikes
       fetchLikes: async ({ ids }) => {
         set({ likes: [] });
         try {
@@ -256,26 +285,21 @@ const useSpaceStore = create(
             })
             .catch((err) => {
               console.log(err);
-              set({ likes:[] });
-
+              set({ likes: [] });
             });
         } catch (error) {
           console.log(error);
-          set({ likes:[] });
+          set({ likes: [] });
         }
       },
       // manage likes
-      manageLike: async ({ postId, userId,authCookie }) => {
+      manageLike: async ({ postId, userId, authCookie }) => {
         // set the comment to state
         set((prev) => {
-          const isLiked = prev.likes.some(
-            (like) => like.likeFor === postId
-          );
+          const isLiked = prev.likes.some((like) => like.likeFor === postId);
           if (isLiked) {
             return {
-              likes: prev.likes.filter(
-                (like) => like.likeFor !== postId
-              ),
+              likes: prev.likes.filter((like) => like.likeFor !== postId),
             };
           } else {
             return {
@@ -298,7 +322,7 @@ const useSpaceStore = create(
                 Authorization: authCookie,
               },
             }
-          )
+          );
         } catch (error) {
           console.log(error);
         }
