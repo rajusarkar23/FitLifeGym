@@ -203,11 +203,12 @@ const signin = async (req: Request, res: any) => {
       `${process.env.JWT_SECRET}`
     );
     return res
-      .cookie("_fit_life_gym_auth", jwt_token, {
-        httpOnly: true,
-        secure: true,
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-      })
+    // COMMENTING THIS BECAUSWE I WANT TO HOST THE BE ON RENDER
+      // .cookie("_fit_life_gym_auth", jwt_token, {
+      //   httpOnly: true,
+      //   secure: true,
+      //   maxAge: 7 * 24 * 60 * 60 * 1000,
+      // })
       .status(200)
       .json({
         success: true,

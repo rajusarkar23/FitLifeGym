@@ -2,7 +2,9 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import z from "zod";
 import axios from "axios";
-import { NEXT_PUBLIC_BACKEND_URL } from "@/lib/config";
+import { NEXT_PUBLIC_BACKEND_URL, NEXT_PUBLIC_JWT_DOMAIN } from "@/lib/config";
+
+import Cookie from "js-cookie"
 
 interface MemberProfile {
   imageUrl: string | null;
@@ -374,6 +376,13 @@ const useUserStore = create(
             )
             .then((response) => {
               if (response.data.success) {
+                Cookie.set("_fit_life_gym_auth", response.data.authCookie, {
+                  secure: true,
+                  domain: NEXT_PUBLIC_JWT_DOMAIN,
+                  expires: 30 * 24 * 60 * 60 * 1000,
+                  sameSite: "Lax",
+                })
+                
                 set({
                   isLoading: false,
                   isError: false,

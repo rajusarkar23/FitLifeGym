@@ -539,16 +539,16 @@ export default function ProfilePage({ cookie }: { cookie: string }) {
           <LoaderCircle color="#873636" className="animate-spin" />
         </div>
       ) : (
-        <div className="flex justify-center items-center min-h-[30vh]">
+        <div className="flex justify-center items-center min-h-[30vh] mt-10">
           <div>
             {/* Profile image section */}
-            <div className="flex justify-center items-center">
+            <div className="w-[250px] h-[250px] rounded-full overflow-hidden">
               <Image
                 src={useUserStore.getState().memberProfile[0].imageUrl!}
-                width={100}
-                height={100}
+                width={250}
+                height={250}
                 alt={useUserStore.getState().memberProfile[0].userName!}
-                className="rounded-full"
+                className="w-full h-full"
               />
             </div>
             {/* Profile details section */}
