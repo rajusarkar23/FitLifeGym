@@ -85,21 +85,21 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="relative flex flex-col justify-center items-center mt-10">
       <div>
         {useUserStore.getState().memberProfile.length !== 0 && (
-          <div>
+          <div className="w-[250px] h-[250px] rounded-full overflow-hidden">
             <Image
               src={useUserStore.getState().memberProfile[0].imageUrl!}
               alt="profile_image"
               width={250}
               height={250}
-              className="rounded-full"
+              className="w-full h-full object-cover"
             />
             <div className="mt-[-60px] ml-44">
               <Button
                 variant={"outline"}
-                className="h-6"
+                className="absolute text-xs h-6"
                 onClick={() => {
                   profilePhotoRef.current?.click()!;
                 }}
