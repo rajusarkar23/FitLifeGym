@@ -186,7 +186,7 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
             <div className="mt-8 border rounded shadow p-4">
               {/* Show plan details */}
               <div className="sm:flex sm:flex-row flex-col sm:space-x-16">
-                <div className="text-xl">
+                <div className="text-xl space-y-7">
                   <p className="text-sm">
                     Current plan:{" "}
                     <span className="font-bold uppercase text-zinc-600">
@@ -375,7 +375,7 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
                       )}
                     </div>
                     {/* DOB */}
-                    <p className="text-sm mt-2 font-semibold">DOB:</p>
+                    {/* <p className="text-sm mt-2 font-semibold">DOB:</p>
                     <div>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -387,21 +387,21 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
                             )}
                           >
                             <CalendarIcon />
-                            {date ? (
+                            {/* {date ? (
                               format(date, "PPP")
                             ) : (
                               <span>Pick a date</span>
-                            )}
-                          </Button>
+                            )} */}
+                          {/* </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
                           <Calendar
                             mode="single"
                             selected={date}
                             onSelect={async (newDate) => {
-                              setDate(newDate);
+                              setDate(newDate); */}
 
-                              try {
+                              {/* try {
                                 setIsDobUpdating(true);
                                 setIsDobUpdatingError(false);
                                 setIsDobUpdatingSuccess(false);
@@ -414,9 +414,9 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
                                     },
                                   }
                                 );
-                                const res = await sendReq.json();
+                                const res = await sendReq.json(); */}
 
-                                if (res.success) {
+                                {/* if (res.success) {
                                   setIsDobUpdating(false);
                                   setIsDobUpdatingSuccess(true);
                                 } else {
@@ -430,8 +430,8 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
                                 setIsDobUpdatingError(true);
                                 setDobUpdatingError("Something is broken");
                               }
-                            }}
-                            initialFocus
+                            }} */}
+                            {/* initialFocus
                           />
                         </PopoverContent>
                       </Popover>
@@ -446,7 +446,7 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
                           Success <CircleCheck size={18} />
                         </p>
                       )}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
