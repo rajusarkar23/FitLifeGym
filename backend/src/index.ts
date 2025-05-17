@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8888;
 // allow cors
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://fit-life-gym-five.vercel.app/"],
+    origin: ["http://localhost:3000", "https://fit-life-gym-five.vercel.app"],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })

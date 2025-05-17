@@ -186,6 +186,7 @@ const signin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         const jwt_token = jsonwebtoken_1.default.sign({ userId: getDbUser[0].id }, `${process.env.JWT_SECRET}`);
         return res
+            // COMMENTING THIS BECAUSWE I WANT TO HOST THE BE ON RENDER
             // .cookie("_fit_life_gym_auth", jwt_token, {
             //   httpOnly: true,
             //   secure: true,
