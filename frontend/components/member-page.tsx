@@ -31,7 +31,6 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
   const { getProfile } = useUserStore();
   const [loading, setLoading] = useState(false);
   const [selectedGenderValue, setSelectedGenderValue] = useState("");
-  // console.log(selectedGenderValue);
 
   const [date, setDate] = React.useState<Date | undefined>(
     new Date("Mon Jan 01 2000   00:00:00 GMT+0530 (India Standard Time")
@@ -306,11 +305,7 @@ const MemberPage = ({ authCookie }: { authCookie: string }) => {
                             : "select"
                         }
                         onValueChange={async (e) => {
-                          // setSelectedGenderValue(e.valueOf.toString())
-                          // console.log(e);
-
                           if (e === "select") {
-                            console.log("select");
                             return;
                           }
 

@@ -672,8 +672,6 @@ const useUserStore = create(
               ids,
             })
             .then((res) => {
-              console.log(res);
-
               set({ fetchLike: res.data.likes });
             })
             .catch((err) => {

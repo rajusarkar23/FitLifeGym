@@ -281,7 +281,6 @@ function CreatePost({ authToken }: { authToken: string }) {
                           formData
                         )
                         .then((response) => {
-                          console.log(response);
                           if (response.data.success) {
                             setFileUploading(false);
                             setIsFileUploadSuccess(true);

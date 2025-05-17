@@ -123,8 +123,6 @@ const useSpaceStore = create(
               },
             })
             .then((res) => {
-              console.log(res.data);
-
               if (res.data.success) {
                 set({
                   isLoading: false,
@@ -203,8 +201,6 @@ const useSpaceStore = create(
       // fetch comments
       fetchComments: async ({ ids, authCookie }) => {
         set({ postComments: [] });
-        console.log(authCookie);
-
         try {
           await axios
             .post(

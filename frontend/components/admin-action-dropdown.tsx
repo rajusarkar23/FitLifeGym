@@ -222,7 +222,6 @@ export function AdminActionDropDown({
                   setIsDropDownOpen(false)
                 } else{
                   console.log(res);
-                  
                 }
               } catch (error) {
                 console.log(error);
