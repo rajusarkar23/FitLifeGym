@@ -194,17 +194,18 @@ const signin = async (req: Request, res: any) => {
       `${process.env.JWT_SECRET}`
     );
     return res
-      .cookie("_fit_life_gym_auth_admin", jwt_token, {
-        httpOnly: true,
-        secure: true,
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-      })
+      // .cookie("_fit_life_gym_auth_admin", jwt_token, {
+      //   httpOnly: true,
+      //   secure: true,
+      //   maxAge: 7 * 24 * 60 * 60 * 1000,
+      // })
       .status(200)
       .json({
         success: true,
         message: responseMessages.signin,
         username: getDbUser[0].username,
         name: getDbUser[0].name,
+        cookie: jwt_token
       });
   } catch (error) {
     console.log(error);

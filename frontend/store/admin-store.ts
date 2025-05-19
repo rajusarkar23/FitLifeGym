@@ -3,6 +3,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import z from "zod"
 import { NEXT_PUBLIC_BACKEND_URL } from "@/lib/config";
+import Cookies from "js-cookie";
 
 // Members data type
 interface Member {
@@ -100,6 +101,8 @@ const useAdminStore = create(persist<AdminStore>((set) => ({
                         adminName: res.data.name,
                         adminUserName: res.data.username
                     })
+                    Cookies.set("_fit_life_gym_auth_admin", res.data.cookie)
+                    
                 }
             }).catch((err) => {
                 set({isLoading: false, isError: true, errorMessage: err.response.data.message})

@@ -179,17 +179,18 @@ const signin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         const jwt_token = jsonwebtoken_1.default.sign({ adminId: getDbUser[0].id }, `${process.env.JWT_SECRET}`);
         return res
-            .cookie("_fit_life_gym_auth_admin", jwt_token, {
-            httpOnly: true,
-            secure: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-        })
+            // .cookie("_fit_life_gym_auth_admin", jwt_token, {
+            //   httpOnly: true,
+            //   secure: true,
+            //   maxAge: 7 * 24 * 60 * 60 * 1000,
+            // })
             .status(200)
             .json({
             success: true,
             message: config_1.responseMessages.signin,
             username: getDbUser[0].username,
             name: getDbUser[0].name,
+            cookie: jwt_token
         });
     }
     catch (error) {
