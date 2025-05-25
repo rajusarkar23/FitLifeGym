@@ -16,7 +16,7 @@ import {
 import { useMobile } from "@/hooks/use-mobile";
 import { useUserStore } from "@/store/user-store";
 import { usePathname, useRouter } from "next/navigation";
-// import { NEXT_PUBLIC_BACKEND_URL } from "@/lib/config";
+import { NEXT_PUBLIC_BACKEND_URL } from "@/lib/config";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -74,25 +74,24 @@ export function MobileNav() {
           <div
             className="flex items-center bg-red-300 hover:bg-red-500 hover:cursor-pointer transition-all rounded px-4 font-bold"
             onClick={async () => {
-              Cookies.remove("_fit_life_gym_auth")
-              navigate.push("/")
+            
               // THIS BELOW IS FOR ONLY SAME ORIGIN
-              // const sendReq = await fetch(
-              //   `${NEXT_PUBLIC_BACKEND_URL}/member/logout`,
-              //   {
-              //     method: "POST",
-              //     credentials: "include",
-              //   }
-              // );
+              const sendReq = await fetch(
+                `${NEXT_PUBLIC_BACKEND_URL}/member/logout`,
+                {
+                  method: "POST",
+                  credentials: "include",
+                }
+              );
 
-              // const res = await sendReq.json();
+              const res = await sendReq.json();
 
-              // if (res.success) {
-              //   localStorage.removeItem("userStore");
-              //   navigate.push("/auth/signin");
-              // } else {
-              //   return;
-              // }
+              if (res.success) {
+                localStorage.removeItem("userStore");
+                navigate.push("/auth/signin");
+              } else {
+                return;
+              }
             }}
           >
             Logout
