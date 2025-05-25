@@ -4,6 +4,8 @@ import * as React from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
+import Cookies from "js-cookie";
+
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -72,22 +74,25 @@ export function MobileNav() {
           <div
             className="flex items-center bg-red-300 hover:bg-red-500 hover:cursor-pointer transition-all rounded px-4 font-bold"
             onClick={async () => {
-              const sendReq = await fetch(
-                `${NEXT_PUBLIC_BACKEND_URL}/member/logout`,
-                {
-                  method: "POST",
-                  credentials: "include",
-                }
-              );
+              Cookies.remove("_fit_life_gym_auth")
+              navigate.push("/")
+              // THIS BELOW IS FOR ONLY SAME ORIGIN
+              // const sendReq = await fetch(
+              //   `${NEXT_PUBLIC_BACKEND_URL}/member/logout`,
+              //   {
+              //     method: "POST",
+              //     credentials: "include",
+              //   }
+              // );
 
-              const res = await sendReq.json();
+              // const res = await sendReq.json();
 
-              if (res.success) {
-                localStorage.removeItem("userStore");
-                navigate.push("/auth/signin");
-              } else {
-                return;
-              }
+              // if (res.success) {
+              //   localStorage.removeItem("userStore");
+              //   navigate.push("/auth/signin");
+              // } else {
+              //   return;
+              // }
             }}
           >
             Logout
