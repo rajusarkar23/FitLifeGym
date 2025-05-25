@@ -16,7 +16,7 @@ import {
 import { useMobile } from "@/hooks/use-mobile";
 import { useUserStore } from "@/store/user-store";
 import { usePathname, useRouter } from "next/navigation";
-import { NEXT_PUBLIC_BACKEND_URL } from "@/lib/config";
+// import { NEXT_PUBLIC_BACKEND_URL } from "@/lib/config";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
