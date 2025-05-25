@@ -413,7 +413,7 @@ export default function SpacePage({ authCookie }: { authCookie: string }) {
               {/* Post image url */}
               <div className="px-2 space-y-2">
                 <div className="text-xl">
-                  <p className="font-extralight">{post.textContent}</p>
+                  <p className="font-bold text-sm">{post.textContent}</p>
                 </div>
                 <div>
                   {post.postImageUrl?.length! > 0 && (
