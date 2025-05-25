@@ -5,11 +5,9 @@ import {
   CheckCircle,
   CircleCheck,
   CirclePlus,
-  CircleUserRound,
   Heart,
   LoaderCircle,
   MessageCircleMore,
-  Plus,
   Send,
 } from "lucide-react";
 import Image from "next/image";
@@ -26,7 +24,6 @@ import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { useSpaceStore } from "@/store/space-home-store";
 import { useMobile } from "@/hooks/use-mobile";
-import Link from "next/link";
 import { useUserStore } from "@/store/user-store";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Label } from "./ui/label";
@@ -148,7 +145,6 @@ export default function SpacePage({ authCookie }: { authCookie: string }) {
 
   const params = useParams();
   const [loading, setLoadign] = useState(false);
-  const router = useRouter();
 
   const getProfiledetailsAndFetchPosts = async () => {
     setLoadign(true);
@@ -387,13 +383,15 @@ export default function SpacePage({ authCookie }: { authCookie: string }) {
                 {/* creator image */}
                 <div>
                   {post.postCreatorImageUrl.length > 0 && (
+                  <div className="w-[60px] h-[60px] rounded-full overflow-hidden">
                     <Image
                       src={post.postCreatorImageUrl}
                       alt="creator_image"
                       width={60}
                       height={60}
-                      className="rounded-full"
-                    />
+                      className="w-full object-cover"
+                      />
+                  </div>
                   )}
                 </div>
                 {/* name plus time */}
